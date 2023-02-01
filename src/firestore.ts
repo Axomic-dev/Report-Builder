@@ -1,5 +1,5 @@
 import { Firestore } from '@google-cloud/firestore';
-import { DocumentRecord } from './interfaces';
+import { DocumentRecord, BoufinAll } from './interfaces/reports';
 import { GCP_PROJECT, FIRESTORE_REQUESTS_COLLECTION_NAME } from './config';
 
 const db: Firestore = new Firestore({
@@ -7,7 +7,7 @@ const db: Firestore = new Firestore({
   timestampsInSnapshots: true
 });
 
-export function insert(data: Record<string, unknown>) {
+export function insert(data: Record<string, BoufinAll>) {
   const local_time = new Date();
   const utc_time = local_time.toUTCString();
   const url = 'https://boufin-personas/validate/';

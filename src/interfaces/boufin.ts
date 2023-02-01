@@ -49,7 +49,7 @@ export const Action = {
   TAX_FOLDER: 'tax-folder',
   TAX_FOLDER_CLAVE_UNICA: 'tax-folder-clave-unica',
   TAX_SITUATION: 'tax-situation',
-  DENTITY_VALIDATION: 'identity-validation',
+  IDENTITY_VALIDATION: 'identity-validation',
   IDENTITY_VALIDATION_CLAVE_UNICA: 'identity-validation-clave-unica',
   TRANSFER: 'transfer',
   PAT: 'pat',
