@@ -1,11 +1,11 @@
 import Joi from 'joi';
 
 const schemaContribution = Joi.object({
-  date: Joi.string(),
-  employerName: Joi.string(),
-  monthlyIncome: Joi.number(),
-  employerContribution: Joi.number(),
-  employeeContribution: Joi.number()
+  date: Joi.string().required(),
+  employerName: Joi.string().required(),
+  monthlyIncome: Joi.number().required(),
+  employerContribution: Joi.number().required(),
+  employeeContribution: Joi.number().required()
 });
 
 export default schemaContribution;

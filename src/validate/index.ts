@@ -1,43 +1,39 @@
 import {
   BoufinAll,
-  DocumentTef,
-  DocumentBill,
-  DocumentMovement,
-  DocumentDebt,
-  DocumentConsolidate,
-  DocumentPersonalInformation,
-  DocumentContribution,
-  DocumentJob,
-  DocumentIncomeReport
+  TaxFolder,
+  TaxSituation,
+  Debt,
+  Consolidate,
+  PersonalInformation,
+  Contribution,
+  Job,
+  IncomeReport
 } from '../interfaces/reports';
 import validateMsg from './message';
-import schemaTef from './documents/tef';
-import schemaBill from './documents/bill';
-import schemaMovement from './documents/movement';
+import schemaTaxFolder from './documents/tax-folder';
+import schemaTaxSituation from './documents/tax-situation';
 import schemaDebt from './documents/debt';
-import schemaInformation from './documents/information';
+import schemaPersonalInformation from './documents/personal-information';
 import schemaContribution from './documents/contribution';
 import schemaJob from './documents/job';
-import schemaIncomeReport from './documents/income';
+import schemaIncomeReport from './documents/income-report';
 import schemaConsolidate from './documents/consolidate';
 import Joi from 'joi';
 
-const validate = {
+const select = {
   message: validateMsg,
-  tef: (doc: BoufinAll): Joi.ValidationResult<DocumentTef> => schemaTef.validate(doc),
-  bill: (doc: BoufinAll): Joi.ValidationResult<DocumentBill> => schemaBill.validate(doc),
-  movement: (doc: BoufinAll): Joi.ValidationResult<DocumentMovement> =>
-    schemaMovement.validate(doc),
-  debt: (doc: BoufinAll): Joi.ValidationResult<DocumentDebt> => schemaDebt.validate(doc),
-  information: (doc: BoufinAll): Joi.ValidationResult<DocumentPersonalInformation> =>
-    schemaInformation.validate(doc),
-  contribution: (doc: BoufinAll): Joi.ValidationResult<DocumentContribution> =>
+  taxFolder: (doc: BoufinAll): Joi.ValidationResult<TaxFolder> => schemaTaxFolder.validate(doc),
+  taxSituation: (doc: BoufinAll): Joi.ValidationResult<TaxSituation> =>
+    schemaTaxSituation.validate(doc),
+  debt: (doc: BoufinAll): Joi.ValidationResult<Debt> => schemaDebt.validate(doc),
+  information: (doc: BoufinAll): Joi.ValidationResult<PersonalInformation> =>
+    schemaPersonalInformation.validate(doc),
+  contribution: (doc: BoufinAll): Joi.ValidationResult<Contribution> =>
     schemaContribution.validate(doc),
-  job: (doc: BoufinAll): Joi.ValidationResult<DocumentJob> => schemaJob.validate(doc),
-  income: (doc: BoufinAll): Joi.ValidationResult<DocumentIncomeReport> =>
-    schemaIncomeReport.validate(doc),
-  consolidate: (doc: BoufinAll): Joi.ValidationResult<DocumentConsolidate> =>
+  job: (doc: BoufinAll): Joi.ValidationResult<Job> => schemaJob.validate(doc),
+  income: (doc: BoufinAll): Joi.ValidationResult<IncomeReport> => schemaIncomeReport.validate(doc),
+  consolidate: (doc: BoufinAll): Joi.ValidationResult<Consolidate> =>
     schemaConsolidate.validate(doc)
 };
 
-export default validate;
+export default select;

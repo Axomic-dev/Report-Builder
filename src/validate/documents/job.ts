@@ -1,13 +1,13 @@
 import Joi from 'joi';
 
 const schemaJob = Joi.object({
-  employerRut: Joi.string(),
-  employerName: Joi.string(),
-  contractType: Joi.string(),
-  subscriptionDate: Joi.string(),
-  startDate: Joi.string(),
-  endDate: Joi.string().allow(''),
-  activeEmployer: Joi.boolean()
+  employerRut: Joi.string().required(),
+  employerName: Joi.string().required(),
+  contractType: Joi.string().required(),
+  subscriptionDate: Joi.string().required(),
+  startDate: Joi.string().required(),
+  endDate: Joi.string().allow('').required(),
+  activeEmployer: Joi.boolean().required()
 });
 
 export default schemaJob;
