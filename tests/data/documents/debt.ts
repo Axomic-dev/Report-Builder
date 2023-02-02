@@ -1,7 +1,7 @@
-import { DocumentDebt } from '../../../src/interfaces/reports';
+import { Debt } from '../../../src/interfaces/reports';
 import { EntityId } from '../../../src/interfaces/boufin';
 
-export const correct: DocumentDebt = {
+export const correct: Debt = {
   directDebts: [
     {
       entity: EntityId.SANTANDER,

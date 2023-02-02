@@ -1,6 +1,6 @@
-import { DocumentJob } from '../../../src/interfaces/reports';
+import { Job } from '../../../src/interfaces/reports';
 
-export const correct: DocumentJob = {
+export const correct: Job = {
   employerRut: '75.183.357-1',
   employerName: 'LILIAN SUAZO EIRL',
   contractType: 'DURACIÓN INDEFINIDA',

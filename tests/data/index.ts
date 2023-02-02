@@ -1,6 +1,5 @@
-import tef from './documents/tef';
-import bill from './documents/bill';
-import movement from './documents/movement';
+import taxFolder from './documents/tax-folder';
+import taxSituation from './documents/tax-situation';
 import debt from './documents/debt';
 import consolidate from './documents/consolidate';
 import validate from '../../src/validate';
@@ -10,48 +9,43 @@ import job from './documents/job';
 import income from './documents/income';
 
 export const testSubjects = {
-  tef: {
-    n: 'TEF',
-    validate: validate.tef,
-    ...tef
+  taxFolder: {
+    n: 'taxFolder',
+    validate: validate.taxFolder,
+    ...taxFolder
   },
-  bill: {
-    n: 'BILL',
-    validate: validate.bill,
-    ...bill
-  },
-  movement: {
-    n: 'MOVEMENT',
-    validate: validate.movement,
-    ...movement
+  taxSituation: {
+    n: 'taxSituation',
+    validate: validate.taxSituation,
+    ...taxSituation
   },
   debt: {
-    n: 'CMF_DEBT',
+    n: 'debt',
     validate: validate.debt,
     ...debt
   },
-  information: {
-    n: 'AFC_PERSONAL_INFORMATION',
+  personalInformation: {
+    n: 'personalInformation',
     validate: validate.information,
     ...information
   },
   contribution: {
-    n: 'AFC_CONTRIBUTION',
+    n: 'constribution',
     validate: validate.contribution,
     ...contribution
   },
   job: {
-    n: 'AFC_JOB',
+    n: 'job',
     validate: validate.job,
     ...job
   },
-  income: {
-    n: 'AFC_INCOME',
+  incomeReport: {
+    n: 'incomeReport',
     validate: validate.income,
     ...income
   },
   consolidate: {
-    n: 'AFC_CONSOLIDATE',
+    n: 'consolidate',
     validate: validate.consolidate,
     ...consolidate
   }

@@ -2,9 +2,9 @@ import information from './information';
 import contribution from './contribution';
 import job from './job';
 import income from './income';
-import { DocumentConsolidate } from '../../../src/interfaces/reports';
+import { Consolidate } from '../../../src/interfaces/reports';
 
-export const correct: DocumentConsolidate = {
+export const correct: Consolidate = {
   balance: 7960534,
   lastCreditedContributionDate: '01-2023',
   contributionsUpToDate: true,

@@ -1,6 +1,6 @@
-import { DocumentContribution } from '../../../src/interfaces/reports';
+import { Contribution } from '../../../src/interfaces/reports';
 
-export const correct: DocumentContribution = {
+export const correct: Contribution = {
   date: '02-2022',
   employerName: 'LILIAN SUAZO EIRL',
   monthlyIncome: 1104649,

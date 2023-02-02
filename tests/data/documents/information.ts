@@ -1,6 +1,6 @@
-import { DocumentPersonalInformation } from '../../../src/interfaces/reports';
+import { PersonalInformation } from '../../../src/interfaces/reports';
 
-export const correct: DocumentPersonalInformation = {
+export const correct: PersonalInformation = {
   name: 'Valentina Lidia Saez Alvarado',
   rut: '13.907.166-2',
   birthDate: '07-01-1992',

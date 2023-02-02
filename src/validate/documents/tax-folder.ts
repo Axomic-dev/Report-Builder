@@ -24,11 +24,13 @@ const ticketInfo = Joi.object({
 
 const companyInfo = Joi.object().pattern(
   Joi.string(),
-  Joi.object({
-    nombre: Joi.string().required(),
-    rut: Joi.string().required(),
-    fechaIncorporacion: Joi.string().required()
-  })
+  Joi.array().items(
+    Joi.object({
+      nombre: Joi.string().required(),
+      rut: Joi.string().required(),
+      fechaIncorporacion: Joi.string().required()
+    })
+  )
 );
 
 const propertyInfo = Joi.object({
@@ -83,7 +85,7 @@ const schemaTaxFolder = Joi.object({
   fechaGeneracion: Joi.string().required(),
   contribuyente: contributorInfo.required(),
   boletas: ticketInfo.required(),
-  empresas: Joi.array().items(companyInfo).required(),
+  empresas: companyInfo.required(),
   propiedadesBienesRaices: Joi.array().items(propertyInfo).required(),
   iva: Joi.array().items(ivaDeclaration).required(),
   renta: Joi.array().items(incomeDeclaration).required()

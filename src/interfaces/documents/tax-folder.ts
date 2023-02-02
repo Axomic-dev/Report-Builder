@@ -19,11 +19,9 @@ type TicketInfo = {
 };
 
 type CompanyInfo = {
-  [x: string]: {
-    nombre: string;
-    rut: string;
-    fechaIncorporacion: string;
-  };
+  nombre: string;
+  rut: string;
+  fechaIncorporacion: string;
 };
 
 type PropertyInfo = {
@@ -77,7 +75,9 @@ export default interface DocumentTaxFolder {
   fechaGeneracion: string;
   contribuyente: ContributorInfo;
   boletas: TicketInfo;
-  empresas: Array<CompanyInfo>;
+  empresas: {
+    [x: string]: Array<CompanyInfo>;
+  };
   propiedadesBienesRaices: Array<PropertyInfo>;
   iva: Array<IvaDeclaration>;
   renta: Array<IncomeDeclaration>;

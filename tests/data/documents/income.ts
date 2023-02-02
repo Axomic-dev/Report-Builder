@@ -1,6 +1,6 @@
-import { DocumentIncomeReport } from '../../../src/interfaces/reports';
+import { IncomeReport } from '../../../src/interfaces/reports';
 
-export const correct: DocumentIncomeReport = {
+export const correct: IncomeReport = {
   activeEmployers: ['CORREDORES LORCA LTDA'],
   isEmployed: true,
   averageMonthlyIncomeLastYear: 1917904,
