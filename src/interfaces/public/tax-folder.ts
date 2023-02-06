@@ -42,7 +42,7 @@ type IvaNameValueInfo = {
   };
 };
 
-type IvaDeclaration = {
+type IvaDeclarationInfo = {
   periodo: string;
   piePagina: IvaNameValueInfo;
   [codigo: string]:
@@ -55,7 +55,7 @@ type IvaDeclaration = {
       };
 };
 
-type IncomeDeclaration = {
+type IncomeDeclarationInfo = {
   folio: string;
   periodo: string;
   [codigo: string]:
@@ -69,7 +69,7 @@ type IncomeDeclaration = {
       };
 };
 
-export default interface DocumentTaxFolder {
+export default interface DataTaxFolder {
   nombre: string;
   rut: string;
   fechaGeneracion: string;
@@ -79,6 +79,6 @@ export default interface DocumentTaxFolder {
     [x: string]: Array<CompanyInfo>;
   };
   propiedadesBienesRaices: Array<PropertyInfo>;
-  iva: Array<IvaDeclaration>;
-  renta: Array<IncomeDeclaration>;
+  iva: Array<IvaDeclarationInfo>;
+  renta: Array<IncomeDeclarationInfo>;
 }

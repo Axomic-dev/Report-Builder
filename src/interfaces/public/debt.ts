@@ -24,7 +24,7 @@ interface CreditTotal {
   indirectAmount: number;
 }
 
-export default interface DocumentDebt {
+export default interface DataDebt {
   directDebts: Array<DebtItem>;
   directDebtsTotal: DebtTotal;
   indirectDebts: Array<DebtItem>;

@@ -1,12 +1,12 @@
-import taxFolder from './documents/tax-folder';
-import taxSituation from './documents/tax-situation';
-import debt from './documents/debt';
-import consolidate from './documents/consolidate';
+import taxFolder from './public/tax-folder';
+import taxSituation from './public/tax-situation';
+import debt from './public/debt';
+import consolidate from './public/consolidate';
 import validate from '../../src/validate';
-import information from './documents/information';
-import contribution from './documents/contribution';
-import job from './documents/job';
-import income from './documents/income';
+import information from './public/personal-information';
+import contribution from './public/contribution';
+import job from './public/job';
+import income from './public/income-report';
 
 export const testSubjects = {
   taxFolder: {
@@ -26,7 +26,7 @@ export const testSubjects = {
   },
   personalInformation: {
     n: 'personalInformation',
-    validate: validate.information,
+    validate: validate.personalInformation,
     ...information
   },
   contribution: {
@@ -41,7 +41,7 @@ export const testSubjects = {
   },
   incomeReport: {
     n: 'incomeReport',
-    validate: validate.income,
+    validate: validate.incomeReport,
     ...income
   },
   consolidate: {

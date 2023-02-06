@@ -1,4 +1,4 @@
-export default interface DocumentIncomeReport {
+export default interface DataIncomeReport {
   activeEmployers: Array<string>;
   isEmployed: boolean;
   averageMonthlyIncomeLastYear: number;

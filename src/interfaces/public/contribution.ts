@@ -1,4 +1,4 @@
-export default interface DocumentContribution {
+export default interface DataContribution {
   date: string;
   employerName: string;
   monthlyIncome: number;

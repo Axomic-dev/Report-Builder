@@ -1,24 +1,13 @@
-import { Message, PubSub } from '@google-cloud/pubsub';
-import { GCP_PROJECT, GCP_SUBSCRIPTION } from './config';
+import { Request as Req, Response as Res } from 'express';
 
-const pubsub = new PubSub();
-export const subscriptionName = `projects/${GCP_PROJECT}/subscriptions/${GCP_SUBSCRIPTION}`;
-const subscription = pubsub.subscription(subscriptionName);
-
-export function messageHandler(pull: Message): void {
+export function messageHandler(req: Req, res: Res): void {
   try {
-    console.info('Received message with id', pull.id);
-    const raw_data: string = pull.data.toString();
-    pull.ack();
-    const message = JSON.parse(raw_data);
+    const rawData = Buffer.from(req.body.message.data, 'base64');
+    const message = JSON.parse(rawData.toString('utf-8'));
     console.info(message);
   } catch (error) {
     console.error(error);
   }
+  res.status(200).send('ack');
 }
-
-subscription.on('message', messageHandler);
-subscription.on('error', function (error: Error): void {
-  console.error(`Error: ${error}`);
-});
 console.info('Server started listening to topic...');

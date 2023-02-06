@@ -1,5 +1,5 @@
 import {
-  BoufinAll,
+  AnyObject,
   TaxFolder,
   TaxSituation,
   Debt,
@@ -9,31 +9,52 @@ import {
   Job,
   IncomeReport
 } from '../interfaces/reports';
-import validateMsg from './message';
-import schemaTaxFolder from './documents/tax-folder';
-import schemaTaxSituation from './documents/tax-situation';
-import schemaDebt from './documents/debt';
-import schemaPersonalInformation from './documents/personal-information';
-import schemaContribution from './documents/contribution';
-import schemaJob from './documents/job';
-import schemaIncomeReport from './documents/income-report';
-import schemaConsolidate from './documents/consolidate';
+import valMessage from './message';
+import schemaTaxFolder from './public/tax-folder';
+import schemaTaxSituation from './public/tax-situation';
+import schemaDebt from './public/debt';
+import schemaPersonalInformation from './public/personal-information';
+import schemaContribution from './public/contribution';
+import schemaJob from './public/job';
+import schemaIncomeReport from './public/income-report';
+import schemaConsolidate from './public/consolidate';
 import Joi from 'joi';
 
-const select = {
-  message: validateMsg,
-  taxFolder: (doc: BoufinAll): Joi.ValidationResult<TaxFolder> => schemaTaxFolder.validate(doc),
-  taxSituation: (doc: BoufinAll): Joi.ValidationResult<TaxSituation> =>
-    schemaTaxSituation.validate(doc),
-  debt: (doc: BoufinAll): Joi.ValidationResult<Debt> => schemaDebt.validate(doc),
-  information: (doc: BoufinAll): Joi.ValidationResult<PersonalInformation> =>
-    schemaPersonalInformation.validate(doc),
-  contribution: (doc: BoufinAll): Joi.ValidationResult<Contribution> =>
-    schemaContribution.validate(doc),
-  job: (doc: BoufinAll): Joi.ValidationResult<Job> => schemaJob.validate(doc),
-  income: (doc: BoufinAll): Joi.ValidationResult<IncomeReport> => schemaIncomeReport.validate(doc),
-  consolidate: (doc: BoufinAll): Joi.ValidationResult<Consolidate> =>
-    schemaConsolidate.validate(doc)
+export function valTaxFolder(doc: AnyObject): Joi.ValidationResult<TaxFolder> {
+  return schemaTaxFolder.validate(doc);
+}
+export function valTaxSituation(doc: AnyObject): Joi.ValidationResult<TaxSituation> {
+  return schemaTaxSituation.validate(doc);
+}
+export function valDebt(doc: AnyObject): Joi.ValidationResult<Debt> {
+  return schemaDebt.validate(doc);
+}
+export function valPersonalInformation(doc: AnyObject): Joi.ValidationResult<PersonalInformation> {
+  return schemaPersonalInformation.validate(doc);
+}
+export function valContribution(doc: AnyObject): Joi.ValidationResult<Contribution> {
+  return schemaContribution.validate(doc);
+}
+export function valJob(doc: AnyObject): Joi.ValidationResult<Job> {
+  return schemaJob.validate(doc);
+}
+export function valIncomeReport(doc: AnyObject): Joi.ValidationResult<IncomeReport> {
+  return schemaIncomeReport.validate(doc);
+}
+export function valConsolidate(doc: AnyObject): Joi.ValidationResult<Consolidate> {
+  return schemaConsolidate.validate(doc);
+}
+
+const validate = {
+  message: valMessage,
+  taxFolder: valTaxFolder,
+  taxSituation: valTaxSituation,
+  debt: valDebt,
+  personalInformation: valPersonalInformation,
+  contribution: valContribution,
+  job: valJob,
+  incomeReport: valIncomeReport,
+  consolidate: valConsolidate
 };
 
-export default select;
+export default validate;

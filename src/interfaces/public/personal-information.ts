@@ -1,4 +1,4 @@
-export default interface DocumentPersonalInformation {
+export default interface DataPersonalInformation {
   name: string;
   rut: string;
   birthDate: string;

@@ -1,4 +1,4 @@
-export default interface DocumentJob {
+export default interface DataJob {
   employerRut: string;
   employerName: string;
   contractType: string;
