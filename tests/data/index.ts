@@ -1,3 +1,5 @@
+import consumerLoan from './banks/consumer-loan';
+import bankIncomeReport from './banks/income-report';
 import taxFolder from './public/tax-folder';
 import taxSituation from './public/tax-situation';
 import debt from './public/debt';
@@ -9,6 +11,16 @@ import job from './public/job';
 import income from './public/income-report';
 
 export const testSubjects = {
+  consumerLoan: {
+    n: 'consumerLoan',
+    validate: validate.consumerLoan,
+    ...consumerLoan
+  },
+  bankIncomeReport: {
+    n: 'bankIncomeReport',
+    validate: validate.bankIncomeReport,
+    ...bankIncomeReport
+  },
   taxFolder: {
     n: 'taxFolder',
     validate: validate.taxFolder,

@@ -1,3 +1,5 @@
+import DataConsumerLoan from './banks/consumer-loan';
+import DataBankIncomeReport from './banks/income-report';
 import DataTaxFolder from './public/tax-folder';
 import DataTaxSituation from './public/tax-situation';
 import DataDebt from './public/debt';
@@ -8,6 +10,8 @@ import DataIncomeReport from './public/income-report';
 import DataConsolidate from './public/consolidate';
 import { Action, EntityId } from './boufin';
 
+export type ConsumerLoan = DataConsumerLoan;
+export type BankIncomeReport = DataBankIncomeReport;
 export type TaxFolder = DataTaxFolder;
 export type TaxSituation = DataTaxSituation;
 export type Debt = DataDebt;
@@ -18,6 +22,8 @@ export type IncomeReport = DataIncomeReport;
 export type Consolidate = DataConsolidate;
 
 type BoufinReports =
+  | DataConsumerLoan
+  | DataBankIncomeReport
   | DataTaxFolder
   | DataTaxSituation
   | DataDebt
@@ -37,11 +43,13 @@ export interface PubsubMessage {
 export interface BoufinResponse {
   taskStatusCode: number;
   taskStatus: string;
-  results?: {
-    username: string;
-    entityId: EntityId;
-    data: BoufinAll;
-  };
+  results:
+    | {
+        username: string;
+        entityId: EntityId;
+        data: BoufinAll;
+      }
+    | Record<string, never>;
 }
 
 export interface DatabaseRecord {

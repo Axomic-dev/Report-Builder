@@ -1,7 +1,7 @@
-import information from './information';
+import information from './personal-information';
 import contribution from './contribution';
 import job from './job';
-import income from './income';
+import income from './income-report';
 import { Consolidate } from '../../../src/interfaces/reports';
 
 export const correct: Consolidate = {

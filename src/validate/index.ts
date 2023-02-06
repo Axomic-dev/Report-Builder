@@ -1,5 +1,7 @@
 import {
   AnyObject,
+  ConsumerLoan,
+  BankIncomeReport,
   TaxFolder,
   TaxSituation,
   Debt,
@@ -10,6 +12,8 @@ import {
   IncomeReport
 } from '../interfaces/reports';
 import valMessage from './message';
+import schemaConsumerLoan from './banks/consumer-loan';
+import schemaBankIncomeReport from './banks/income-report';
 import schemaTaxFolder from './public/tax-folder';
 import schemaTaxSituation from './public/tax-situation';
 import schemaDebt from './public/debt';
@@ -20,6 +24,12 @@ import schemaIncomeReport from './public/income-report';
 import schemaConsolidate from './public/consolidate';
 import Joi from 'joi';
 
+export function valConsumerLoan(doc: AnyObject): Joi.ValidationResult<ConsumerLoan> {
+  return schemaConsumerLoan.validate(doc);
+}
+export function valBankIncomeReport(doc: AnyObject): Joi.ValidationResult<BankIncomeReport> {
+  return schemaBankIncomeReport.validate(doc);
+}
 export function valTaxFolder(doc: AnyObject): Joi.ValidationResult<TaxFolder> {
   return schemaTaxFolder.validate(doc);
 }
@@ -47,6 +57,8 @@ export function valConsolidate(doc: AnyObject): Joi.ValidationResult<Consolidate
 
 const validate = {
   message: valMessage,
+  consumerLoan: valConsumerLoan,
+  bankIncomeReport: valBankIncomeReport,
   taxFolder: valTaxFolder,
   taxSituation: valTaxSituation,
   debt: valDebt,
