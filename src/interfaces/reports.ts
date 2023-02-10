@@ -41,16 +41,16 @@ export interface PubsubMessage {
   requests: Record<Action, string>;
 }
 
+interface BoufinData {
+  username: string;
+  entityId: EntityId;
+  data: AnyObject;
+}
+
 export interface BoufinResponse {
   taskStatusCode: number;
   taskStatus: string;
-  results:
-    | {
-        username: string;
-        entityId: EntityId;
-        data: BoufinAll;
-      }
-    | Record<string, never>;
+  results: BoufinData | Record<string, never>;
 }
 
 export interface DatabaseRecord {
