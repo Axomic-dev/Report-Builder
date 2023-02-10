@@ -1,25 +1,7 @@
-export const BankCode = {
-  BCI: '016',
-  BICE: '028',
-  BTG_PACTUAL: '059',
-  CHILE: '001',
-  CONSORCIO: '055',
-  COOPEUCH: '672',
-  DO_BRASIL: '017',
-  ESTADO: '012',
-  FALABELLA: '051',
-  HSBC: '031',
-  INTERNACIONAL: '009',
-  ITAU: '039',
-  LOS_HEROES: '729',
-  RIPLEY: '053',
-  SANTANDER: '037',
-  SCOTIABANK: '014',
-  SCOTIABANK_AZUL: '504',
-  SECURITY: '049',
-  TENPO: '730',
-  TAPP: '732',
-  MERCADO_PAGO: '875'
+export const DocumentTier = {
+  STANDARD: 'standard',
+  PLUS: 'plus',
+  PREMIUM: 'premium'
 };
 
 export const EntityId = {
@@ -66,6 +48,6 @@ export const Action = {
   INVESTMENT_REPORT: 'investment-report'
 };
 
-export type BankCode = (typeof BankCode)[keyof typeof BankCode];
+export type DocumentTier = (typeof DocumentTier)[keyof typeof DocumentTier];
 export type EntityId = (typeof EntityId)[keyof typeof EntityId];
 export type Action = (typeof Action)[keyof typeof Action];

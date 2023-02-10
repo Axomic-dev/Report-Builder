@@ -8,7 +8,7 @@ import DataContribution from './public/contribution';
 import DataJob from './public/job';
 import DataIncomeReport from './public/income-report';
 import DataConsolidate from './public/consolidate';
-import { Action, EntityId } from './boufin';
+import { Action, DocumentTier, EntityId } from './boufin';
 
 export type ConsumerLoan = DataConsumerLoan;
 export type BankIncomeReport = DataBankIncomeReport;
@@ -37,6 +37,7 @@ export type BoufinAll = AnyObject | Array<AnyObject>;
 
 export interface PubsubMessage {
   token: string;
+  tier: DocumentTier;
   requests: Record<Action, string>;
 }
 

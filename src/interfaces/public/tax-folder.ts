@@ -18,7 +18,7 @@ type TicketInfo = {
   porMes: Array<MonthlyTicket>;
 };
 
-type CompanyInfo = {
+export type CompanyInfo = {
   nombre: string;
   rut: string;
   fechaIncorporacion: string;
