@@ -63,6 +63,6 @@ export interface DatabaseRecord {
 }
 
 type ValidateFunction = (doc: AnyObject) => Joi.ValidationResult<BoufinReports>;
-export type AnyValidateFunction = ValidateFunction | (() => void);
+export type AnyValidateFunction = ValidateFunction | (() => undefined);
 type SelectFunction = (doc: AnyObject) => AnyObject;
-export type AnySelectFunction = SelectFunction | (() => void);
+export type AnySelectFunction = SelectFunction | (() => undefined);

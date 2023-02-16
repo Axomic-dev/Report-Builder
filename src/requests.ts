@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { BoufinResponse } from './interfaces/reports';
 
 const fail: BoufinResponse = {
@@ -5,16 +6,19 @@ const fail: BoufinResponse = {
   taskStatus: 'Error: Response failed at reception.',
   results: Object()
 };
+
 export default async function boufinRequest(token: string, taskId: string) {
-  const method = 'GET';
-  const redirect = 'follow';
-  const headers = new Headers();
-  headers.append('Authorization', `Bearer ${token}`);
-  const init: RequestInit = { method, headers, redirect };
+  const config = {
+    method: 'get',
+    url: `https://api-sandbox.boufin.com/api/v1/tasks/${taskId}`,
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
   try {
-    const response = await fetch(`https://api-sandbox.boufin.com/api/v1/tasks/${taskId}`, init);
-    const body: BoufinResponse = await response.json();
-    return body;
+    const response = await axios(config);
+    const body = await response.data;
+    return body as BoufinResponse;
   } catch (error) {
     console.error(error);
     return fail;
