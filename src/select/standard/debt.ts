@@ -1,7 +1,8 @@
-import { Debt } from '../../interfaces/reports';
+import { AnyObject, Debt } from '../../interfaces/reports';
 
-export default function selectDebt(doc: Debt) {
-  const { directDebtsTotal, otherCreditsTotal, indirectDebtsTotal, availableCreditsTotal } = doc;
+export default function selectDebt(doc: AnyObject): AnyObject {
+  const { directDebtsTotal, otherCreditsTotal, indirectDebtsTotal, availableCreditsTotal } =
+    doc as Debt;
   const directTotal = availableCreditsTotal.directAmount + otherCreditsTotal.directAmount;
   const indirectTotal = availableCreditsTotal.indirectAmount + otherCreditsTotal.indirectAmount;
   return {

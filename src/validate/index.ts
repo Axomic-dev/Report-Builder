@@ -9,9 +9,9 @@ import {
   PersonalInformation,
   Contribution,
   Job,
-  IncomeReport
+  IncomeReport,
+  AnyValidateFunction
 } from '../interfaces/reports';
-import valMessage from './message';
 import schemaConsumerLoan from './banks/consumer-loan';
 import schemaBankIncomeReport from './banks/income-report';
 import schemaTaxFolder from './public/tax-folder';
@@ -22,7 +22,9 @@ import schemaContribution from './public/contribution';
 import schemaJob from './public/job';
 import schemaIncomeReport from './public/income-report';
 import schemaConsolidate from './public/consolidate';
+import defaultValues from '../tools/default';
 import Joi from 'joi';
+import { Action } from '../interfaces/boufin';
 
 export function valConsumerLoan(doc: AnyObject): Joi.ValidationResult<ConsumerLoan> {
   return schemaConsumerLoan.validate(doc);
@@ -55,17 +57,16 @@ export function valConsolidate(doc: AnyObject): Joi.ValidationResult<Consolidate
   return schemaConsolidate.validate(doc);
 }
 
-const validate = {
-  message: valMessage,
-  consumerLoan: valConsumerLoan,
-  bankIncomeReport: valBankIncomeReport,
-  taxFolder: valTaxFolder,
-  taxSituation: valTaxSituation,
+const validate: Record<Action, AnyValidateFunction> = {
+  ...defaultValues,
+  'consumer-loan': valConsumerLoan,
+  'income-report': valBankIncomeReport,
+  'tax-folder': valTaxFolder,
+  'tax-situation': valTaxSituation,
   debt: valDebt,
-  personalInformation: valPersonalInformation,
+  'personal-information': valPersonalInformation,
   contribution: valContribution,
   job: valJob,
-  incomeReport: valIncomeReport,
   consolidate: valConsolidate
 };
 

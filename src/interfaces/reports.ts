@@ -9,6 +9,7 @@ import DataJob from './public/job';
 import DataIncomeReport from './public/income-report';
 import DataConsolidate from './public/consolidate';
 import { Action, DocumentTier, EntityId } from './boufin';
+import Joi from 'joi';
 
 export type ConsumerLoan = DataConsumerLoan;
 export type BankIncomeReport = DataBankIncomeReport;
@@ -56,7 +57,12 @@ export interface BoufinResponse {
 export interface DatabaseRecord {
   docId: string;
   validate: string;
-  data: Record<string, BoufinAll>;
+  data: Record<string, unknown>;
   createdAt: string;
   updatedAt: string;
 }
+
+type ValidateFunction = (doc: AnyObject) => Joi.ValidationResult<BoufinReports>;
+export type AnyValidateFunction = ValidateFunction | (() => void);
+type SelectFunction = (doc: AnyObject) => AnyObject;
+export type AnySelectFunction = SelectFunction | (() => void);

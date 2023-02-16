@@ -1,9 +1,17 @@
 import { Request as Req, Response as Res } from 'express';
-import { BoufinAll, PubsubMessage } from './interfaces/reports';
-import { Action } from './interfaces/boufin';
+import { AnyObject, BoufinAll, PubsubMessage } from './interfaces/reports';
+import { Action, DocumentTier } from './interfaces/boufin';
 import boufinRequest from './requests';
 import { insert } from './firestore';
-import match from './match';
+import validate from './validate';
+import select from './select';
+import Joi from 'joi';
+
+function sanitize(data: AnyObject, action: Action, tier: DocumentTier) {
+  const { value, error } = validate[action](data) as Joi.ValidationResult<AnyObject>;
+  if (error) throw new Error(`Error: Failed at validate ${action} action.`);
+  return select[tier][action](value);
+}
 
 export async function messageHandler(req: Req, res: Res) {
   try {
@@ -14,7 +22,7 @@ export async function messageHandler(req: Req, res: Res) {
     for (action in message.requests) {
       const response = await boufinRequest(message.token, message.requests[action]);
       if (response.taskStatusCode === 400) continue;
-      data[`${action}`] = match(response, action);
+      data[action] = sanitize(response.results.data, action, message.tier) as AnyObject;
     }
     const reportId = await insert(data);
     console.info(`Report stored succesfully on ${reportId}!`);

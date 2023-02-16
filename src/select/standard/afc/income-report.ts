@@ -1,12 +1,12 @@
-import { IncomeReport } from '../../../interfaces/reports';
+import { AnyObject, IncomeReport } from '../../../interfaces/reports';
 
-export default function selectIncomeReport(doc: IncomeReport) {
+export default function selectIncomeReport(doc: AnyObject): AnyObject {
   const {
     monthlyIncome1YearAgo,
     monthlyIncome3YearsAgo,
     monthlyIncome,
     monthsWithoutContributionsLastYear
-  } = doc;
+  } = doc as IncomeReport;
   return {
     averageIncome1YearAgo: monthlyIncome1YearAgo.toString(),
     averageIncome3YearAgo: monthlyIncome3YearsAgo.toString(),

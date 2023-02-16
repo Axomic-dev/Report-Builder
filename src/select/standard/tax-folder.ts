@@ -1,15 +1,16 @@
-import { TaxFolder } from '../../interfaces/reports';
+import { AnyObject, TaxFolder } from '../../interfaces/reports';
 import { CompanyInfo } from '../../interfaces/public/tax-folder';
 
-export default function selectTaxFolder(doc: TaxFolder) {
-  const { empresas, propiedadesBienesRaices } = doc;
-  let sociedades: Array<CompanyInfo> = [];
+export default function selectTaxFolder(doc: AnyObject): AnyObject {
+  const { empresas, propiedadesBienesRaices } = doc as TaxFolder;
+  let societies: Array<CompanyInfo> = [];
   let attribute: string;
   for (attribute in empresas) {
     if (attribute.includes('ociedad')) {
-      sociedades = sociedades.concat(empresas[attribute]);
+      societies = societies.concat(empresas[attribute]);
     }
   }
+  const sociedades = societies.map((e) => JSON.stringify(e));
   const bienesRaices = propiedadesBienesRaices.map((prop) => {
     const { rol, direccion } = prop;
     return { rol, direccion };
