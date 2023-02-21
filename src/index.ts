@@ -17,6 +17,7 @@ export async function messageHandler(req: Req, res: Res) {
   try {
     const rawData = Buffer.from(req.body.message.data, 'base64');
     const message: PubsubMessage = JSON.parse(rawData.toString('utf-8'));
+    console.info(JSON.stringify(message));
     const data: Record<string, BoufinAll> = {};
     let action: Action;
     for (action in message.requests) {
