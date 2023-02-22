@@ -1,14 +1,11 @@
 import { AnyObject, Debt } from '../../interfaces/reports';
 
 export default function selectDebt(doc: AnyObject): AnyObject {
-  const { directDebtsTotal, otherCreditsTotal, indirectDebtsTotal, availableCreditsTotal } =
-    doc as Debt;
-  const directTotal = availableCreditsTotal.directAmount + otherCreditsTotal.directAmount;
-  const indirectTotal = availableCreditsTotal.indirectAmount + otherCreditsTotal.indirectAmount;
+  const { directDebtsTotal, indirectDebtsTotal } = doc as Debt;
   return {
     directDebtsTotal: directDebtsTotal.total.toString(),
     indirectDebtsTotal: indirectDebtsTotal.total.toString(),
-    directCreditsTotal: directTotal.toString(),
-    indirectCreditsTotal: indirectTotal.toString()
+    directDebtsDelay90: directDebtsTotal.delay90.toString(),
+    indirectDebtsDelay90: indirectDebtsTotal.delay90.toString()
   };
 }
