@@ -2,7 +2,7 @@ import { Firestore } from '@google-cloud/firestore';
 import { DatabaseRecord, BoufinAll } from './interfaces/reports';
 import { GCP_PROJECT, FIRESTORE_BUILDER_COLLECTION_NAME } from './config';
 
-const db: Firestore = new Firestore({
+const firestore: Firestore = new Firestore({
   projectId: GCP_PROJECT,
   timestampsInSnapshots: true
 });
@@ -11,8 +11,8 @@ export async function insert(docId: string, data: Record<string, BoufinAll>) {
   const local_time = new Date();
   const utc_time = local_time.toUTCString();
   const url = 'https://boufin-personas/validate/';
-  const newDoc = db.collection(FIRESTORE_BUILDER_COLLECTION_NAME).doc(docId);
-  console.info('[Firestore] Stored new document with id', newDoc.id);
+  const newDoc = firestore.collection(FIRESTORE_BUILDER_COLLECTION_NAME).doc(docId);
+  console.info('[Firestore] Stored new information on document with id', newDoc.id);
 
   const values: DatabaseRecord = {
     docId: newDoc.id,
@@ -25,7 +25,6 @@ export async function insert(docId: string, data: Record<string, BoufinAll>) {
   return await newDoc
     .set(values)
     .then(() => {
-      console.info('Report generated succesfully');
       return newDoc.id;
     })
     .catch((error: Error) => {

@@ -1,5 +1,5 @@
 import consumerLoan from './banks/consumer-loan';
-import bankIncomeReport from './banks/income-report';
+import incomeReport from './banks/income-report';
 import taxFolder from './public/tax-folder';
 import taxSituation from './public/tax-situation';
 import debt from './public/debt';
@@ -13,22 +13,22 @@ import income from './public/income-report';
 export const testSubjects = {
   consumerLoan: {
     n: 'consumerLoan',
-    validate: validate.consumerLoan,
+    validate: validate['consumer-loan'],
     ...consumerLoan
   },
-  bankIncomeReport: {
-    n: 'bankIncomeReport',
-    validate: validate.bankIncomeReport,
-    ...bankIncomeReport
+  incomeReport: {
+    n: 'incomeReport',
+    validate: validate['income-report'],
+    ...incomeReport
   },
   taxFolder: {
     n: 'taxFolder',
-    validate: validate.taxFolder,
+    validate: validate['tax-folder'],
     ...taxFolder
   },
   taxSituation: {
     n: 'taxSituation',
-    validate: validate.taxSituation,
+    validate: validate['tax-situation'],
     ...taxSituation
   },
   debt: {
@@ -38,7 +38,7 @@ export const testSubjects = {
   },
   personalInformation: {
     n: 'personalInformation',
-    validate: validate.personalInformation,
+    validate: validate['personal-information'],
     ...information
   },
   contribution: {
@@ -50,11 +50,6 @@ export const testSubjects = {
     n: 'job',
     validate: validate.job,
     ...job
-  },
-  incomeReport: {
-    n: 'incomeReport',
-    validate: validate.incomeReport,
-    ...income
   },
   consolidate: {
     n: 'consolidate',
