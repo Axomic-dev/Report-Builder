@@ -4,8 +4,7 @@ import { phoneFormat } from '../../../tools/format';
 
 export default function selectPersonalInformation(doc: AnyObject): AnyObject {
   const { name, rut, birthDate, phone, email } = doc as PersonalInformation;
-  const bday = new Date(birthDate);
-  const age = ageFrom(bday);
+  const age = ageFrom(birthDate);
   const phoneNumber = phone ? phoneFormat(phone) : '-';
   const mail = email ? email : '-';
   const { street, number, extra, region, commune } = doc as PersonalInformation;

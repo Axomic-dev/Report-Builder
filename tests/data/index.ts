@@ -8,7 +8,6 @@ import validate from '../../src/validate';
 import information from './public/personal-information';
 import contribution from './public/contribution';
 import job from './public/job';
-import income from './public/income-report';
 
 export const testSubjects = {
   consumerLoan: {
