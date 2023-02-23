@@ -1,4 +1,5 @@
 import { AnyObject, IncomeReport } from '../../../interfaces/reports';
+import { clpFormat } from '../../../tools/format';
 
 export default function selectIncomeReport(doc: AnyObject): AnyObject {
   const {
@@ -8,9 +9,9 @@ export default function selectIncomeReport(doc: AnyObject): AnyObject {
     monthsWithoutContributionsLastYear
   } = doc as IncomeReport;
   return {
-    averageIncome1YearAgo: monthlyIncome1YearAgo.toString(),
-    averageIncome3YearAgo: monthlyIncome3YearsAgo.toString(),
-    lastIncomeBalance: monthlyIncome.toString(),
-    monthsWithIncomeLastYear: (12 - monthsWithoutContributionsLastYear).toString()
+    averageIncome1YearAgo: clpFormat(monthlyIncome1YearAgo),
+    averageIncome3YearAgo: clpFormat(monthlyIncome3YearsAgo),
+    lastIncomeBalance: clpFormat(monthlyIncome),
+    monthsWithIncomeLastYear: `${12 - monthsWithoutContributionsLastYear} meses`
   };
 }
