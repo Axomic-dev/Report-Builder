@@ -1,4 +1,4 @@
-# Boufin Personas: Report Request
+# Boufin Personas: Report Builder
 
 This is a service which is part of the live demo presented by TeamAxomic!
 This service corresponds to the JSON documents builder, it connects with an extern API to work. This will later save those to a Firestore instance.
